@@ -246,6 +246,7 @@ parseStatement: true, parseSourceElement: true */
 
     function isIdentifierStart(ch) {
         return (ch === 36) || (ch === 95) ||  // $ (dollar) and _ (underscore)
+            (ch === 64) || (ch === 35) ||     // DERBY: @ (at sign) and # (number sign)
             (ch >= 65 && ch <= 90) ||         // A..Z
             (ch >= 97 && ch <= 122) ||        // a..z
             (ch === 92) ||                    // \ (backslash)
@@ -254,6 +255,7 @@ parseStatement: true, parseSourceElement: true */
 
     function isIdentifierPart(ch) {
         return (ch === 36) || (ch === 95) ||  // $ (dollar) and _ (underscore)
+            (ch === 45) ||                    // DERBY: - (hyphen)
             (ch >= 65 && ch <= 90) ||         // A..Z
             (ch >= 97 && ch <= 122) ||        // a..z
             (ch >= 48 && ch <= 57) ||         // 0..9
