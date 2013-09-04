@@ -1,24 +1,10 @@
-**Esprima** ([esprima.org](http://esprima.org), BSD license) is a high performance,
-standard-compliant [ECMAScript](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
-parser written in ECMAScript (also popularly known as
-[JavaScript](http://en.wikipedia.org/wiki/JavaScript>JavaScript)).
-Esprima is created and maintained by [Ariya Hidayat](http://twitter.com/ariyahidayat),
-with the help of [many contributors](https://github.com/ariya/esprima/contributors).
+**esprima-derby** ([esprima.org](http://esprima.org), BSD license)
 
-### Features
+This fork of Esprima is modified to parse expressions in Derby templates. Parsing of statements and other non-expression language features has been removed. ECMAScript keywords have been removed, so expressions such as `class` will be parsed as identifiers instead of as keywords.
 
-- Full support for ECMAScript 5.1 ([ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm))
-- Sensible [syntax tree format](http://esprima.org/doc/index.html#ast) compatible with Mozilla
-[Parser AST](https://developer.mozilla.org/en/SpiderMonkey/Parser_API)
-- Optional tracking of syntax node location (index-based and line-column)
-- Heavily tested (> 600 [unit tests](http://esprima.org/test/) with solid statement and branch coverage)
-- Experimental support for ES6/Harmony (module, class, destructuring, ...)
+In addition, a few modifications have been made to identifiers:
 
-Esprima serves as a **building block** for some JavaScript
-language tools, from [code instrumentation](http://esprima.org/demo/functiontrace.html)
-to [editor autocompletion](http://esprima.org/demo/autocomplete.html).
+  * Identifiers may start with an at sign (`@`) or hash (`#`) in addition to the standard set of starting characters (underscore, dollar sign, A-Z, a-z, and ISO 8859-1 or Unicode characters)
+  * After the first character, dentifiers may contain hyphens (`-`) in addition to the standard set of subsequent characters (underscore, dollar sign, A-Z, a-z, ISO 8859-1 or Unicode characters, and 0-9). Because of this extension, the expression `x-y` is interpreted as a single identifier, whereas `x - y` and `x -y` are interpreted as "`x` minus `y`".
 
-Esprima runs on many popular web browsers, as well as other ECMAScript platforms such as
-[Rhino](http://www.mozilla.org/rhino) and [Node.js](https://npmjs.org/package/esprima).
-
-For more information, check the web site [esprima.org](http://esprima.org).
+For more information, see [derbyjs.com](http://derbyjs.com) and [esprima.org](http://esprima.org).
