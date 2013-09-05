@@ -260,7 +260,10 @@ parseStatement: true, parseSourceElement: true */
     // 7.6.1.1 Keywords
 
     function isKeyword(id) {
-        return (id === 'this') || (id === 'typeof') || (id === 'instanceof');
+        return (id === 'this') ||
+            (id === 'typeof') ||
+            (id === 'instanceof') ||
+            (id === 'in');
     }
 
     // 7.4 Comments
