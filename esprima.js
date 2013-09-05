@@ -76,6 +76,7 @@ parseStatement: true, parseSourceElement: true */
         extra;
 
     Token = {
+        UndefinedLiteral: -1,  // DERBY
         BooleanLiteral: 1,
         EOF: 2,
         Identifier: 3,
@@ -88,6 +89,7 @@ parseStatement: true, parseSourceElement: true */
     };
 
     TokenName = {};
+    TokenName[Token.UndefinedLiteral] = 'Undefined';  // DERBY
     TokenName[Token.BooleanLiteral] = 'Boolean';
     TokenName[Token.EOF] = '<end>';
     TokenName[Token.Identifier] = 'Identifier';
@@ -510,6 +512,8 @@ parseStatement: true, parseSourceElement: true */
             type = Token.Identifier;
         } else if (isKeyword(id)) {
             type = Token.Keyword;
+        } else if (id === 'undefined') {  // DERBY
+            type = Token.Undefined;
         } else if (id === 'null') {
             type = Token.NullLiteral;
         } else if (id === 'true' || id === 'false') {
@@ -1078,6 +1082,7 @@ parseStatement: true, parseSourceElement: true */
         return token.type === Token.Identifier ||
             token.type === Token.Keyword ||
             token.type === Token.BooleanLiteral ||
+            token.type === Token.Undefined ||  // DERBY
             token.type === Token.NullLiteral;
     }
 
@@ -1840,6 +1845,10 @@ parseStatement: true, parseSourceElement: true */
         } else if (type === Token.BooleanLiteral) {
             token = lex();
             token.value = (token.value === 'true');
+            expr = delegate.createLiteral(token);
+        } else if (type === Token.Undefined) {  // DERBY
+            token = lex();
+            token.value = void 0;
             expr = delegate.createLiteral(token);
         } else if (type === Token.NullLiteral) {
             token = lex();
