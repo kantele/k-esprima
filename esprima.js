@@ -262,7 +262,8 @@ parseStatement: true, parseSourceElement: true */
         return (id === 'this') ||
             (id === 'typeof') ||
             (id === 'instanceof') ||
-            (id === 'in');
+            (id === 'in') ||
+            (id === 'new');
     }
 
     // 7.4 Comments
