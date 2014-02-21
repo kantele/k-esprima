@@ -2,7 +2,7 @@
 
 This fork of Esprima is modified to parse expressions in Derby templates.
 
-Parsing of statements and other non-expression language features has been removed. With the exception of the operators `typeof`, `instanceof`, and `in`, ECMAScript keywords have been removed. Expressions such as `class` and `for` are parsed as identifiers instead of as keywords.
+Parsing of statements and other non-expression language features has been removed. With the exception of `this`, `typeof`, `instanceof`, `in`, and `new`, ECMAScript keywords have been removed. Expressions such as `class` and `for` are parsed as identifiers instead of as keywords.
 
 Instead of parsing it as an identifier, `undefined` is parsed as a literal. It works the same way as `null` parsing.
 
